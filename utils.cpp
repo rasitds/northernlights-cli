@@ -1,4 +1,6 @@
 #include <iostream> // cout flush
+#include <queue>
+
 void print(std::string text, std::string type = "none") {
     if (type == "response")
         std::cout << "> " << text << std::endl;
@@ -23,4 +25,22 @@ void getPromptStyle(int type = 2) {
             std::cout << "#  " << std::flush;
             break;
     }
+}
+
+std::queue<std::string> split(const std::string& s) {
+    std::queue<std::string> out;
+
+    std::string::size_type prev_pos = 0, pos = 0;
+
+    while((pos = s.find(" ", pos)) != std::string::npos) {
+        std::string substring(s.substr(prev_pos, pos-prev_pos));
+
+        out.push(substring);
+        
+        prev_pos = ++pos;
+    }
+
+    out.push(s.substr(prev_pos, pos-prev_pos));
+
+    return out;
 }

@@ -1,3 +1,5 @@
+#include <queue>
+#include <functional>
 #include "utils.hpp"
 
 class Prompt {
@@ -22,6 +24,10 @@ void Prompt::get() {
 
         if (input == "q" || input == "/")
             break;
+
+        std::queue<std::string> parameters = split(input);
+
+        std::cout << parameters.size();
         
         print("You typed: " + input, "response");
         getPromptStyle();
