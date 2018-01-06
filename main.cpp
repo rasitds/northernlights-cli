@@ -1,5 +1,6 @@
 #include <iostream>
 #include "prompt.hpp"
+#include "command.hpp"
 
 int main() {
     Prompt prompt;

@@ -1,5 +1,4 @@
 #include <queue>
-#include <functional>
 #include "utils.hpp"
 
 class Prompt {
