@@ -1,7 +1,7 @@
 #include <queue>
-#include "utils.hpp"
+#include "command.hpp"
 
-class Prompt {
+class Prompt : public Command {
     std::string input;
 
 public:
@@ -26,9 +26,24 @@ void Prompt::get() {
 
         std::queue<std::string> parameters = split(input);
 
-        std::cout << parameters.size();
+        MappedCommands::iterator command = all.find(parameters.front());
+
+        if (command == all.end()) {
+            print("COMMAND NOT FOUND.", "response");
+            getPromptStyle();
+            continue;
+        }
+
+        parameters.pop();
+
+        if(parameters.size() < command->second.params.size()) {
+            print("Invalid parameters");
+            getPromptStyle();
+            continue;
+        }
+
+        command->second.function(parameters);
         
-        print("You typed: " + input, "response");
         getPromptStyle();
     }
 }
