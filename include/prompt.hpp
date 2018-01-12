@@ -36,8 +36,18 @@ void Prompt::get() {
 
         parameters.pop();
 
-        if(parameters.size() < command->second.params.size()) {
-            print("Invalid parameters");
+        const std::vector<std::string> commandParams = command->second.params;
+        if(parameters.size() < commandParams.size()) {
+            std::string stringParams;
+            for (int j = 0; j < commandParams.size(); j++) {
+                stringParams += commandParams[j];
+
+                if (j < commandParams.size() - 1)
+                    stringParams += ", ";
+            }
+
+            print("INVALID PARAMETERS. PARAMETERS ARE " + stringParams, "info");
+
             getPromptStyle();
             continue;
         }

@@ -17,6 +17,11 @@ public:
                 print("ADMIN COMMAND EXECUTED.", "warn");
             }
         });
+        addCommand({ "grant", {"access", "/"},
+            [](std::queue<std::string>&) {
+                print("GRANT COMMAND EXECUTED.", "warn");
+            }
+        });
     }
 
     using MappedCommands = std::unordered_map<std::string, CommandStruct>;
