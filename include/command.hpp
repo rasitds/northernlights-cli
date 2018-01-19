@@ -1,6 +1,8 @@
+#include <string>
+#include <vector>
 #include <functional>
+#include <queue>
 #include <unordered_map>
-#include "db.hpp"
 
 struct CommandStruct {
     std::string name;
@@ -11,25 +13,12 @@ struct CommandStruct {
 class Command {
 
 public:
-    Command() {
-        addCommand({ "admin", {},
-            [](std::queue<std::string>&) {
-                print("ADMIN COMMAND EXECUTED.", "warn");
-            }
-        });
-        addCommand({ "grant", {"access", "/"},
-            [](std::queue<std::string>&) {
-                print("GRANT COMMAND EXECUTED.", "warn");
-            }
-        });
-    }
+    Command();
 
     using MappedCommands = std::unordered_map<std::string, CommandStruct>;
     using MappedCommand = MappedCommands::value_type;
 
     MappedCommands all;
 
-    void addCommand(CommandStruct command) {
-        all.emplace(command.name, command);
-    }
+    void addCommand(CommandStruct command);
 };

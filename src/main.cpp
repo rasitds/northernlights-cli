@@ -1,7 +1,7 @@
 #include <iostream>
 #include <queue>
-#include "utils.hpp"
 #include "prompt.hpp"
+#include "utils.hpp"
 
 int main() {
     print("Northern Lights CLI");
