@@ -10,6 +10,8 @@ private:
     DB();
     ~DB();
 
+    void load();
+
 public:
 
     static DB& getInstance() {
@@ -18,4 +20,7 @@ public:
     };
 
     rapidjson::Document d;
+
+
+    void init();
 };
