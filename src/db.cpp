@@ -15,13 +15,19 @@ void DB::init() {
 }
 
 void DB::load() {
-    FILE* fp = fopen("db.json", "r");
+    FILE* db_file = fopen("db.json", "r");
+
+    if (!db_file) {
+        db_file = fopen("db.json", "w");
+        fputs("{}", db_file);
+        fclose(db_file);
+    }
 
     char readBuffer[65536];
 
-    rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+    rapidjson::FileReadStream is(db_file, readBuffer, sizeof(readBuffer));
 
     d.ParseStream(is);
 
-    fclose(fp);
+    fclose(db_file);
 }
