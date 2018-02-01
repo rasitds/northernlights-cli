@@ -5,7 +5,7 @@
 #include "utils.hpp"
 
 void Prompt::init() {
-    print("INIT: PROMPT");
+    print("system", "INIT: PROMPT");
     getPromptStyle();
 }
 
@@ -24,7 +24,7 @@ void Prompt::get() {
         MappedCommands::iterator command = all.find(parameters.front());
 
         if (command == all.end()) {
-            print("COMMAND NOT FOUND.", "response");
+            print("response", "COMMAND NOT FOUND.");
             getPromptStyle();
             continue;
         }
@@ -41,7 +41,7 @@ void Prompt::get() {
                     stringParams += ", ";
             }
 
-            print("INVALID PARAMETERS. PARAMETERS ARE " + stringParams, "info");
+            print("info", "INVALID PARAMETERS. PARAMETERS ARE " + stringParams);
 
             getPromptStyle();
             continue;

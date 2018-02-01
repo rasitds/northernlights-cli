@@ -5,7 +5,7 @@
 #include "utils.hpp"
 
 int main() {
-    print("Northern Lights CLI");
+    print("system", "Northern Lights CLI");
 
     Prompt prompt;
     

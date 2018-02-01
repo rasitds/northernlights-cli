@@ -10,7 +10,7 @@ DB::~DB() {
 }
 
 void DB::init() {
-    print("INIT: DATABASE");
+    print("system", "INIT: DATABASE");
     load();
 }
 

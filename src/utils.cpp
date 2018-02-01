@@ -2,19 +2,20 @@
 #include <queue>
 #include "lib/termcolor/termcolor.hpp"
 
-void print(std::string text, std::string type = "none") {
+void print(std::string type, std::string text) {
     std::cout << termcolor::reset;
     if (type == "response")
         std::cout << "> " << text << std::endl;
     else if (type == "info")
         std::cout << termcolor::red << "> " << text << termcolor::reset << std::endl;
-    else if (type == "okay")
+    else if (type == "success")
         std::cout << termcolor::cyan << "> " << text << termcolor::reset << std::endl;
     else if (type == "great")
         std::cout << termcolor::green << "> " << text << termcolor::reset << std::endl; 
-    else if (type == "warn")
+    else if (type == "warning")
         std::cout << termcolor::on_red << "  " << text << " " << termcolor::reset << std::endl;
-    else std::cout << text << std::endl;
+    else if (type == "system")
+        std::cout << text << std::endl;
 }
 
 void getPromptStyle(int type = 2) {

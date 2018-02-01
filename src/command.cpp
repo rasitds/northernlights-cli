@@ -5,18 +5,18 @@
 Command::Command() {
     addCommand({ "admin", {},
         [](std::queue<std::string>&) {
-            print("ADMIN COMMAND EXECUTED.", "warn");
+            print("warning", "ADMIN COMMAND EXECUTED.");
         }
     });
     addCommand({ "grant", {"access", "/"},
         [](std::queue<std::string>&) {
-            print("GRANT COMMAND EXECUTED.", "warn");
+            print("warning", "GRANT COMMAND EXECUTED.");
         }
     });
     addCommand({ "clear", {},
         [](std::queue<std::string>&) {
             system("clear");
-            print("CLEAR COMMAND EXECUTED.", "okay");
+            print("success", "CLEAR COMMAND EXECUTED.");
         }
     });
     addCommand({ "echo", {},
@@ -26,17 +26,18 @@ Command::Command() {
             for (int j = 0; j <= params.size() + 1; j++) {
                 text += params.front() + " ";
 
-                params.pop();
+                if (!params.empty())
+                    params.pop();
             }
 
             text += params.back();
 
-            print(text);
+            print("system", text);
         }
     });
     addCommand({ "search", {},
         [](std::queue<std::string>& params) {
-            print("Searching...", "response");
+            print("response", "Searching...");
             bool searchStatus = false;
 
             std::string text;
@@ -53,22 +54,22 @@ Command::Command() {
             //...
 
             if (!searchStatus)
-                print("NO VALID SEARCH FOUND.", "response");
+                print("response", "NO VALID SEARCH FOUND.");
             else
-                print("SHOWING RESULTS", "response");
+                print("system", "SHOWING RESULTS");
         }
     });
     addCommand({ "analyze", {},
         [](std::queue<std::string>&) {
-            print("Analyzing...", "response");
+            print("response", "Analyzing...");
             bool resultFound = false;
 
             //...
 
             if (!resultFound)
-                print("NO RESULT FOUND.", "response");
+                print("response", "NO RESULT FOUND.");
             else
-                print("Results:");
+                print("system", "Results:");
 
             //...
         }
