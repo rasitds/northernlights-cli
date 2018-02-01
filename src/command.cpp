@@ -19,7 +19,7 @@ Command::Command() {
             print("success", "CLEAR COMMAND EXECUTED.");
         }
     });
-    addCommand({ "echo", {},
+    addCommand({ "echo", {"text"},
         [](std::queue<std::string>& params) {
             std::string text;
 
@@ -35,7 +35,7 @@ Command::Command() {
             print("system", text);
         }
     });
-    addCommand({ "search", {},
+    addCommand({ "search", {"text | keyword"},
         [](std::queue<std::string>& params) {
             print("response", "Searching...");
             bool searchStatus = false;
