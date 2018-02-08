@@ -13,12 +13,16 @@ struct CommandStruct {
 class Command {
 
 public:
-    Command();
-
     using MappedCommands = std::unordered_map<std::string, CommandStruct>;
     using MappedCommand = MappedCommands::value_type;
-
+    
     MappedCommands all;
+    
+    Command();
+
+    void getCommands() {
+        this->all = all;
+    }
 
     void addCommand(CommandStruct command);
 };

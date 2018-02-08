@@ -3,6 +3,13 @@
 #include "utils.hpp"
 
 Command::Command() {
+    addCommand({ "cmds", {},
+        [](std::queue<std::string>&) {
+            print("system", "Command List: \n");
+
+            //...
+        }
+    });
     addCommand({ "admin", {},
         [](std::queue<std::string>&) {
             print("warning", "ADMIN COMMAND EXECUTED.");
