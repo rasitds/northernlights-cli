@@ -9,15 +9,20 @@ void Prompt::init() {
     getPromptStyle();
 }
 
-void Prompt::get() {
+void Prompt::get() {    
     while(getline(std::cin, input)) {
         if (input.empty()) {
             getPromptStyle();
             continue;
         }
 
-        if (input == "q" || input == "/")
+        if (input == "q")
             break;
+        else if (input == "/") {
+            setPromptStyle(4);
+            getPromptStyle();
+            continue;
+        }
 
         std::queue<std::string> parameters = split(input);
 
@@ -50,5 +55,30 @@ void Prompt::get() {
         command->second.function(parameters);
         
         getPromptStyle();
+        fflush(stdout);
+    }
+}
+
+void Prompt::setPromptStyle(int styleId) {
+    this->promptStyle = styleId;
+}
+
+void Prompt::getPromptStyle() {
+    switch (this->promptStyle) {
+        case 0:
+            std::cout << ">/ " << std::flush;
+            break;
+        case 1:
+            std::cout << "> /" << std::flush;
+            break;
+        case 2:
+            std::cout << "< /" << std::flush;
+            break;
+        case 3:
+            std::cout << "</ " << std::flush;
+            break;
+        default:
+            std::cout << "# " << std::flush;
+            break;
     }
 }

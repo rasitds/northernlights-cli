@@ -18,26 +18,6 @@ void print(std::string type, std::string text) {
         std::cout << text << std::endl;
 }
 
-void getPromptStyle(int type = 2) {
-    switch (type) {
-        case 0:
-            std::cout << ">/ " << std::flush;
-            break;
-        case 1:
-            std::cout << "> /" << std::flush;
-            break;
-        case 2:
-            std::cout << "< /" << std::flush;
-            break;
-        case 3:
-            std::cout << "</ " << std::flush;
-            break;
-        default:
-            std::cout << "#  " << std::flush;
-            break;
-    }
-}
-
 std::queue<std::string> split(const std::string& s) {
     std::queue<std::string> out;
 
