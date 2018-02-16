@@ -46,10 +46,32 @@ void Prompt::get() {
                     stringParams += ", ";
             }
 
-            print("info", "INVALID PARAMETERS. PARAMETERS ARE " + stringParams);
+            print("info", "MISSING PARAMETERS. PARAMETERS ARE " + stringParams);
 
             getPromptStyle();
             continue;
+        } else {
+            bool checkParams = false;
+            std::queue<std::string> _parameters = parameters;
+            for (int j = 0; j < commandParams.size(); j++) {
+                if (_parameters.front() == commandParams[j]) {
+                    checkParams = true;
+                    _parameters.pop();
+                } else
+                    checkParams = false;
+            }
+            if (!checkParams) {
+                std::string stringParams;
+                for (int j = 0; j < commandParams.size(); j++) {
+                    stringParams += commandParams[j];
+
+                    if (j < commandParams.size() - 1)
+                        stringParams += ", ";
+                }
+                print("info", "INVALID PARAMETERS. PARAMETERS ARE " + stringParams);
+                getPromptStyle();
+                continue;
+            }
         }
 
         command->second.function(parameters);
