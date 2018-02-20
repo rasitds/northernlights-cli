@@ -25,4 +25,6 @@ public:
     }
 
     void addCommand(CommandStruct command);
+
+    std::string getParameters(const std::vector<std::string>);
 };

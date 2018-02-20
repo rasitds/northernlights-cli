@@ -9,7 +9,7 @@ void Prompt::init() {
     getPromptStyle();
 }
 
-void Prompt::get() {    
+void Prompt::get() {   
     while(getline(std::cin, input)) {
         if (input.empty()) {
             getPromptStyle();
@@ -38,13 +38,7 @@ void Prompt::get() {
 
         const std::vector<std::string> commandParams = command->second.params;
         if(parameters.size() < commandParams.size()) {
-            std::string stringParams;
-            for (int j = 0; j < commandParams.size(); j++) {
-                stringParams += commandParams[j];
-
-                if (j < commandParams.size() - 1)
-                    stringParams += ", ";
-            }
+            std::string stringParams = getParameters(commandParams);
 
             print("info", "MISSING PARAMETERS. PARAMETERS ARE " + stringParams);
 
@@ -53,22 +47,21 @@ void Prompt::get() {
         } else {
             bool checkParams = false;
             std::queue<std::string> _parameters = parameters;
+
             for (int j = 0; j < commandParams.size(); j++) {
                 if (_parameters.front() == commandParams[j]) {
                     checkParams = true;
+                    
                     _parameters.pop();
                 } else
                     checkParams = false;
             }
-            if (!checkParams) {
-                std::string stringParams;
-                for (int j = 0; j < commandParams.size(); j++) {
-                    stringParams += commandParams[j];
 
-                    if (j < commandParams.size() - 1)
-                        stringParams += ", ";
-                }
+            if (!checkParams) {
+                std::string stringParams = getParameters(commandParams);
+
                 print("info", "INVALID PARAMETERS. PARAMETERS ARE " + stringParams);
+
                 getPromptStyle();
                 continue;
             }

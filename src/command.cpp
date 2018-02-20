@@ -86,3 +86,15 @@ Command::Command() {
 void Command::addCommand(CommandStruct command) {
     all.emplace(command.name, command);
 }
+
+std::string Command::getParameters(const std::vector<std::string> cmdParams) {
+    std::string stringParams;
+    for (int j = 0; j < cmdParams.size(); j++) {
+        stringParams += cmdParams[j];
+
+        if (j < cmdParams.size() - 1)
+            stringParams += ", ";
+    }
+    
+    return stringParams;
+}
