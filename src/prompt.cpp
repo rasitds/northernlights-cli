@@ -45,7 +45,7 @@ void Prompt::get() {
             getPromptStyle();
             continue;
         } else {
-            bool checkParams = false;
+            bool checkParams = true;
             std::queue<std::string> _parameters = parameters;
 
             for (int j = 0; j < commandParams.size(); j++) {
@@ -60,7 +60,7 @@ void Prompt::get() {
             if (!checkParams) {
                 std::string stringParams = getParameters(commandParams);
 
-                print("info", "INVALID PARAMETERS. PARAMETERS ARE " + stringParams);
+                print("warning", "INVALID PARAMETERS. PARAMETERS ARE " + stringParams);
 
                 getPromptStyle();
                 continue;
