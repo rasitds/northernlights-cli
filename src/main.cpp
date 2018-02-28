@@ -6,5 +6,6 @@
 int main() {
     print("system", "Northern Lights CLI");
     System system;
-    system.boot(10);
+    system.setBootMode(0);
+    system.boot();
 }
