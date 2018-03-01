@@ -2,11 +2,12 @@
 
 class Prompt : public Command {
     int m_ipromptStyle = 2;
-    std::string input;
+    std::string m_sinput;
 
 public:
     void init();
     void get();
-    void setPromptStyle(int);
-    void getPromptStyle();
+    void setPromptStyle(int styleId);
+    int getPromptStyle();
+    void printPromptStyle();
 };

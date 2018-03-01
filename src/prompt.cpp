@@ -6,31 +6,31 @@
 
 void Prompt::init() {
     print("system", "INIT: PROMPT");
-    getPromptStyle();
+    printPromptStyle();
 }
 
 void Prompt::get() {   
-    while(getline(std::cin, input)) {
-        if (input.empty()) {
-            getPromptStyle();
+    while(getline(std::cin, m_sinput)) {
+        if (m_sinput.empty()) {
+            printPromptStyle();
             continue;
         }
 
-        if (input == "q")
+        if (m_sinput == "q")
             break;
-        else if (input == "/") {
+        else if (m_sinput == "/") {
             setPromptStyle(4);
-            getPromptStyle();
+            printPromptStyle();
             continue;
         }
 
-        std::queue<std::string> parameters = split(input);
+        std::queue<std::string> parameters = split(m_sinput);
 
         MappedCommands::iterator command = all.find(parameters.front());
 
         if (command == all.end()) {
             print("response", "COMMAND NOT FOUND.");
-            getPromptStyle();
+            printPromptStyle();
             continue;
         }
 
@@ -42,7 +42,7 @@ void Prompt::get() {
 
             print("info", "MISSING PARAMETERS. PARAMETERS ARE " + stringParams);
 
-            getPromptStyle();
+            printPromptStyle();
             continue;
         } else {
             bool checkParams = true;
@@ -62,14 +62,14 @@ void Prompt::get() {
 
                 print("warning", "INVALID PARAMETERS. PARAMETERS ARE " + stringParams);
 
-                getPromptStyle();
+                printPromptStyle();
                 continue;
             }
         }
 
         command->second.function(parameters);
         
-        getPromptStyle();
+        printPromptStyle();
         fflush(stdout);
     }
 }
@@ -78,8 +78,12 @@ void Prompt::setPromptStyle(int styleId) {
     this->m_ipromptStyle = styleId;
 }
 
-void Prompt::getPromptStyle() {
-    switch (this->m_ipromptStyle) {
+int Prompt::getPromptStyle() {
+    return this->m_ipromptStyle;
+}
+
+void Prompt::printPromptStyle() {
+    switch (getPromptStyle()) {
         case 0:
             std::cout << ">/ " << std::flush;
             break;
