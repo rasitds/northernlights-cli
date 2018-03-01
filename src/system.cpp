@@ -3,11 +3,11 @@
 #include "db.hpp"
 
 void System::setBootMode(int bootMode) {
-    this->bootMode = bootMode;
+    this->m_ibootMode = bootMode;
 }
 
 int System::getBootMode() {
-    return this->bootMode;
+    return this->m_ibootMode;
 }
 
 void System::boot() {

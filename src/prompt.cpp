@@ -75,11 +75,11 @@ void Prompt::get() {
 }
 
 void Prompt::setPromptStyle(int styleId) {
-    this->promptStyle = styleId;
+    this->m_ipromptStyle = styleId;
 }
 
 void Prompt::getPromptStyle() {
-    switch (this->promptStyle) {
+    switch (this->m_ipromptStyle) {
         case 0:
             std::cout << ">/ " << std::flush;
             break;

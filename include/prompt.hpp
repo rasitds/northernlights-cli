@@ -1,7 +1,7 @@
 #include "command.hpp"
 
 class Prompt : public Command {
-    int promptStyle = 2;
+    int m_ipromptStyle = 2;
     std::string input;
 
 public:

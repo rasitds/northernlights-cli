@@ -3,10 +3,10 @@
 class System : public Prompt {
 
 private:
-    int bootMode = 10;
+    int m_ibootMode = 10;
 
 public:
-    void setBootMode(int);
+    void setBootMode(int bootMode);
     int getBootMode();
     void boot();
 
