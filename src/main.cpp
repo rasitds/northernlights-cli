@@ -3,7 +3,8 @@
 #include "system.hpp"
 #include "utils.hpp"
 
-int main() {
+int main()
+{
     print("system", "Northern Lights CLI");
     System system;
     system.setBootMode(0);
