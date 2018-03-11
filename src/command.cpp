@@ -1,4 +1,4 @@
-#include "command.hpp"
+#include "prompt.hpp"
 #include "user.hpp"
 #include "db.hpp"
 #include "utils.hpp"
@@ -8,6 +8,15 @@ Command::Command()
     addCommand({"cmds", {}, [](std::queue<std::string> &)
                 {
                     print("system", "Command List: \n");
+
+                    //...
+                }});
+    addCommand({"access", {}, [](std::queue<std::string> &)
+                {
+                    Prompt prompt;
+                    int promptMode = prompt.getPromptMode();
+                    if (promptMode)
+                        return;
 
                     //...
                 }});

@@ -87,16 +87,24 @@ void Prompt::get()
     }
 }
 
-void Prompt::setPromptMode(int promtMode)
+void Prompt::setPromptMode(int promptMode)
 {
-    switch (promtMode)
+    this->m_ipromptMode = promptMode;
+    /*switch (promptMode)
     {
     case 0:
     case 1:
-        setPromptStyle(4);
+
     case 10:
         break;
     }
+
+    setPromptStyle(-1);*/
+}
+
+int Prompt::getPromptMode()
+{
+    return this->m_ipromptMode;
 }
 
 void Prompt::setPromptStyle(int styleId)
