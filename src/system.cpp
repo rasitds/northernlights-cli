@@ -1,5 +1,6 @@
 #include <iostream>
 #include "system.hpp"
+#include "trigger.hpp"
 #include "db.hpp"
 
 void System::setBootMode(int bootMode)
@@ -17,15 +18,20 @@ void System::boot()
     switch (getBootMode())
     {
     case 0:
-    {
-        std::string nlString = "Northern Lights";
-        std::cout << &nlString << std::endl;
-    }
+        {
+            std::string nlString = "Northern Lights";
+            std::cout << &nlString << std::endl;
+        }
     case 1:
     case 10:
         DB::getInstance().init();
 
         Prompt::init();
         Prompt::get();
+        break;
+    case 20:
+        Trigger trigger;
+        //trigger.terminate();
+        //break;
     }
 }
