@@ -21,7 +21,7 @@ void Prompt::get()
         }
 
         if (m_sinput == "q")
-            break;
+            trigger->terminate();
         else if (m_sinput == "/")
         {
             setPromptMode(1);

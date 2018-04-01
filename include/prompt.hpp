@@ -1,7 +1,10 @@
 #include "command.hpp"
+#include "trigger.hpp"
 
 class Prompt : public Command
 {
+    Trigger *trigger;
+
 private:
     int m_ipromptMode = 10;
     int m_ipromptStyle = 2;
