@@ -1,3 +1,5 @@
+#ifndef _USER_HPP_
+#define _USER_HPP_
 
 class User
 {
@@ -7,3 +9,5 @@ public:
     void setUserType(int userType);
     int getUserType();
 };
+
+#endif

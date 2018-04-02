@@ -1,3 +1,6 @@
+#ifndef _COMMAND_HPP_
+#define _COMMAND_HPP_
+
 #include <string>
 #include <vector>
 #include <functional>
@@ -31,3 +34,5 @@ public:
 
     std::string getParameters(const std::vector<std::string>);
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef _PROMPT_HPP_
+#define _PROMPT_HPP_
+
 #include "command.hpp"
 #include "trigger.hpp"
 
@@ -22,3 +25,5 @@ public:
 
     void printPromptStyle();
 };
+
+#endif

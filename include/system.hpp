@@ -1,3 +1,6 @@
+#ifndef _SYSTEM_HPP_
+#define _SYSTEM_HPP_
+
 #include "prompt.hpp"
 
 class System : public Prompt
@@ -11,3 +14,5 @@ public:
     int getBootMode();
     void boot();
 };
+
+#endif

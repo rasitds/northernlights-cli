@@ -1,3 +1,6 @@
+#ifndef _DB_HPP_
+#define _DB_HPP_
+
 #include "lib/rapidjson/filereadstream.h"
 #include "lib/rapidjson/filewritestream.h"
 #include "lib/rapidjson/writer.h"
@@ -24,3 +27,5 @@ public:
 
     void init();
 };
+
+#endif
