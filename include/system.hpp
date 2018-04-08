@@ -3,13 +3,14 @@
 
 #include "prompt.hpp"
 
-class System : public Prompt
+class System
 {
 
 private:
     int m_ibootMode = 10;
 
 public:
+    Prompt prompt;
     void setBootMode(int bootMode);
     int getBootMode();
     void boot();

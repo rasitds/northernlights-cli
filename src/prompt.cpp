@@ -22,12 +22,6 @@ void Prompt::get()
 
         if (m_sinput == "q")
             trigger->terminate();
-        else if (m_sinput == "/")
-        {
-            setPromptMode(1);
-            printPromptStyle();
-            continue;
-        }
 
         std::queue<std::string> parameters = split(m_sinput);
 
@@ -89,52 +83,38 @@ void Prompt::get()
 
 void Prompt::setPromptMode(int promptMode)
 {
-    this->m_ipromptMode = promptMode;
-    /*switch (promptMode)
-    {
-    case 0:
-    case 1:
-
-    case 10:
-        break;
-    }
-
-    setPromptStyle(-1);*/
+    this->m_iPromptMode = promptMode;
 }
 
 int Prompt::getPromptMode()
 {
-    return this->m_ipromptMode;
-}
-
-void Prompt::setPromptStyle(int styleId)
-{
-    this->m_ipromptStyle = styleId;
-}
-
-int Prompt::getPromptStyle()
-{
-    return this->m_ipromptStyle;
+    return this->m_iPromptMode;
 }
 
 void Prompt::printPromptStyle()
 {
-    switch (getPromptStyle())
+    int promptMode = Instance().getPromptMode();
+    int promptStyleId = promptMode * 10;
+    
+    switch (promptStyleId)
     {
     case 0:
         std::cout << ">/ " << std::flush;
         break;
-    case 1:
+    case 10:
         std::cout << "> /" << std::flush;
         break;
-    case 2:
+    case 20:
         std::cout << "< /" << std::flush;
         break;
-    case 3:
+    case 40:
         std::cout << "</ " << std::flush;
         break;
-    default:
+    case 80:
         std::cout << "# " << std::flush;
+        break;
+    default:
+        std::cout << "#<-" << std::flush;
         break;
     }
 }

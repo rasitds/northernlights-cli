@@ -26,8 +26,8 @@ void System::boot()
     case 10:
         DB::getInstance().init();
 
-        Prompt::init();
-        Prompt::get();
+        prompt.init();
+        prompt.get();
         break;
     case 20:
         Trigger trigger;

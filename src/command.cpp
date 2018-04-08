@@ -1,22 +1,30 @@
-#include "prompt.hpp"
+#include "command.hpp"
 #include "user.hpp"
 #include "db.hpp"
 #include "utils.hpp"
+#include "prompt.hpp"
 
 Command::Command()
 {
+    
     addCommand({"cmds", {}, [](std::queue<std::string> &)
                 {
                     print("system", "Command List: \n");
 
                     //...
                 }});
+    addCommand({"/", {}, [](std::queue<std::string> &)
+                {
+                    int promptMode = Prompt::Instance().getPromptMode();
+                    Prompt::Instance().setPromptMode(promptMode == 2 ? 8 : 2);
+                }});
     addCommand({"access", {}, [](std::queue<std::string> &)
                 {
-                    Prompt prompt;
-                    int promptMode = prompt.getPromptMode();
-                    if (promptMode)
+                    int promptMode = Prompt::Instance().getPromptMode();;
+                    if (promptMode != 8)
                         return;
+
+                    print("warning", "ACCESS COMMAND EXECUTED!");
 
                     //...
                 }});
@@ -34,7 +42,7 @@ Command::Command()
     addCommand({"clear", {}, [](std::queue<std::string> &)
                 {
                     system("clear");
-                    print("success", "CLEAR COMMAND EXECUTED.");
+                    print("response", "CLEAR COMMAND EXECUTED.");
                 }});
     addCommand({"echo", {"text"}, [](std::queue<std::string> &params)
                 {
