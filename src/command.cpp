@@ -3,15 +3,19 @@
 #include "db.hpp"
 #include "utils.hpp"
 #include "prompt.hpp"
+#include "trigger.hpp"
 
 Command::Command()
 {
-    
     addCommand({"cmds", {}, [](std::queue<std::string> &)
                 {
                     print("system", "Command List: \n");
 
                     //...
+                }});
+    addCommand({"q", {}, [](std::queue<std::string> &)
+                {
+                    Trigger::Instance().terminate();
                 }});
     addCommand({"/", {}, [](std::queue<std::string> &)
                 {

@@ -20,9 +20,6 @@ void Prompt::get()
             continue;
         }
 
-        if (m_sinput == "q")
-            trigger->terminate();
-
         std::queue<std::string> parameters = split(m_sinput);
 
         MappedCommands::iterator command = all.find(parameters.front());

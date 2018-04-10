@@ -2,12 +2,9 @@
 #define _PROMPT_HPP_
 
 #include "command.hpp"
-#include "trigger.hpp"
-
 
 class Prompt : public Command
 {
-    Trigger *trigger;
 
 public:
     static Prompt& Instance() { 

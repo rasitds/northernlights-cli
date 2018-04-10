@@ -7,8 +7,6 @@
 #include <queue>
 #include <unordered_map>
 
-class System;
-
 struct CommandStruct
 {
     std::string name;
