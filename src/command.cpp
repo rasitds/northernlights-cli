@@ -9,8 +9,8 @@ Command::Command()
 {
     addCommand({"cmds", {}, [](std::queue<std::string> &)
                 {
-                    print("system", "Command List: \n");
-
+                    print("system", "Command List:");
+                    print("system", "clear, echo, grant, admin, search, analyze, access, /, q");
                     //...
                 }});
     addCommand({"q", {}, [](std::queue<std::string> &)
