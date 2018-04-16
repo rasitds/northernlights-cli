@@ -3,6 +3,7 @@
 #include <queue>
 #include "prompt.hpp"
 #include "utils.hpp"
+#include "lib/termcolor/termcolor.hpp"
 
 void Prompt::init()
 {
@@ -109,6 +110,9 @@ void Prompt::printPromptStyle()
         break;
     case 80:
         std::cout << "# " << std::flush;
+        break;
+    case 1010:
+        std::cout << termcolor::yellow << "ADMIN" << termcolor::reset << "# " << std::flush;
         break;
     default:
         std::cout << "#<-" << std::flush;

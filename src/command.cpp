@@ -29,6 +29,7 @@ Command::Command()
                         return;
 
                     print("warning", "ACCESS COMMAND EXECUTED!");
+                    Prompt::Instance().setPromptMode(101);
 
                     //...
                 }});
