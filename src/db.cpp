@@ -19,7 +19,7 @@ void DB::load() {
     print("system", "RUN: DATABASE LOADING..");
 
     print("system", "RUN: READ DATABASE FILE");
-    FILE* db_file = fopen("db.json", "r");
+    db_file = fopen("db.json", "r");
 
     print("system", "RUN: CHECK DATABASE FILE");
     if (!db_file) {
@@ -29,11 +29,27 @@ void DB::load() {
         fclose(db_file);
     }
 
-    char readBuffer[65536];
+    char readBuffer[BUFFER_SIZE];
 
     rapidjson::FileReadStream is(db_file, readBuffer, sizeof(readBuffer));
 
     d.ParseStream(is);
+
+    fclose(db_file);
+}
+
+void DB::save() {
+    print("system", "RUN: SAVE DATABASE CHANGES..");
+
+    print("system", "RUN: WRITE DATABASE FILE");
+    db_file = fopen("db.json", "w");
+
+    char writeBuffer[BUFFER_SIZE];
+
+    rapidjson::FileWriteStream os(db_file, writeBuffer, sizeof(writeBuffer));
+
+    rapidjson::Writer<rapidjson::FileWriteStream> writer(os);
+    d.Accept(writer);
 
     fclose(db_file);
 }
