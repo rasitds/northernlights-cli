@@ -6,6 +6,7 @@
 #include "lib/rapidjson/writer.h"
 #include "lib/rapidjson/prettywriter.h"
 #include "lib/rapidjson/document.h"
+#include "lib/rapidjson/stringbuffer.h"
 
 class DB {
 
@@ -17,7 +18,7 @@ private:
     ~DB();
 
     void load();
-    void save();
+    void save(bool);
 public:
 
     static DB& getInstance() {
@@ -26,7 +27,6 @@ public:
     };
 
     rapidjson::Document d;
-
 
     void init();
 };

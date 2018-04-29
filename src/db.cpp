@@ -38,7 +38,7 @@ void DB::load() {
     fclose(db_file);
 }
 
-void DB::save() {
+void DB::save(bool withPrettier = false) {
     print("system", "RUN: SAVE DATABASE CHANGES..");
 
     print("system", "RUN: WRITE DATABASE FILE");
@@ -48,8 +48,13 @@ void DB::save() {
 
     rapidjson::FileWriteStream os(db_file, writeBuffer, sizeof(writeBuffer));
 
-    rapidjson::Writer<rapidjson::FileWriteStream> writer(os);
-    d.Accept(writer);
+    if (withPrettier) {
+        rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(os);
+        d.Accept(writer);
+    } else {
+        rapidjson::Writer<rapidjson::FileWriteStream> writer(os);
+        d.Accept(writer);
+    }
 
     fclose(db_file);
 }
