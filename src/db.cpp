@@ -31,7 +31,7 @@ void DB::load() {
 
     char readBuffer[BUFFER_SIZE];
 
-    rapidjson::FileReadStream is(db_file, readBuffer, sizeof(readBuffer));
+    FileReadStream is(db_file, readBuffer, sizeof(readBuffer));
 
     d.ParseStream(is);
 
@@ -46,13 +46,13 @@ void DB::save(bool withPrettier = false) {
 
     char writeBuffer[BUFFER_SIZE];
 
-    rapidjson::FileWriteStream os(db_file, writeBuffer, sizeof(writeBuffer));
+    FileWriteStream os(db_file, writeBuffer, sizeof(writeBuffer));
 
     if (withPrettier) {
-        rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(os);
+        PrettyWriter<FileWriteStream> writer(os);
         d.Accept(writer);
     } else {
-        rapidjson::Writer<rapidjson::FileWriteStream> writer(os);
+        Writer<FileWriteStream> writer(os);
         d.Accept(writer);
     }
 

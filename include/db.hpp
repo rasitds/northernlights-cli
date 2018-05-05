@@ -8,6 +8,8 @@
 #include "lib/rapidjson/document.h"
 #include "lib/rapidjson/stringbuffer.h"
 
+using namespace rapidjson;
+
 class DB {
 
 private:
@@ -26,7 +28,7 @@ public:
         return singleton;
     };
 
-    rapidjson::Document d;
+    Document d;
 
     void init();
 };
