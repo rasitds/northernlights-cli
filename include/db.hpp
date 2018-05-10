@@ -14,7 +14,6 @@ class DB {
 
 private:
     FILE* db_file;
-    const int BUFFER_SIZE = 65546;
 
     DB();
     ~DB();
