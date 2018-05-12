@@ -33,7 +33,9 @@ void DB::load() {
 
     FileReadStream is(db_file, readBuffer, sizeof(readBuffer));
 
-    d.ParseStream(is);
+    if (d.ParseStream(is).HasParseError()) {
+        print("system", "FAIL: PARSE ERROR");
+    }
 
     fclose(db_file);
 }
