@@ -57,5 +57,27 @@ void DB::save(bool withPrettier = false) {
         d.Accept(writer);
     }
 
+    print("system", "RUN: SAVE DATABASE FILE");
     fclose(db_file);
+}
+
+void DB::test() {
+    print("system", "RUN: DATABASE TEST");
+
+    assert(d.IsObject());
+
+    Value::MemberIterator checkAbc = d.FindMember("abc");
+    if (checkAbc == d.MemberEnd())
+        return;
+
+    d["abc"].SetString("rapid", 5);
+
+    const std::string abc = "abc: ";
+    print("system", "TEST: " + abc + d["abc"].GetString());
+
+    d["abc"].SetString("json", 4);
+
+    print("system", "TEST: " + abc + d["abc"].GetString());
+
+    save(true);
 }

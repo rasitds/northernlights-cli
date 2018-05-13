@@ -33,6 +33,7 @@ void System::boot()
     case 1:
     case 10:
         DB::getInstance().init();
+        DB::getInstance().test();
 
         prompt.init();
         prompt.get();

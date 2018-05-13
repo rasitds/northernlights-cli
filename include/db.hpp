@@ -30,6 +30,7 @@ public:
     Document d;
 
     void init();
+    void test();
 };
 
 #endif
