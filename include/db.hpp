@@ -7,6 +7,7 @@
 #include "lib/rapidjson/prettywriter.h"
 #include "lib/rapidjson/document.h"
 #include "lib/rapidjson/stringbuffer.h"
+#include "lib/rapidjson/pointer.h"
 
 using namespace rapidjson;
 

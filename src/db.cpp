@@ -79,5 +79,9 @@ void DB::test() {
 
     print("system", "TEST: " + abc + d["abc"].GetString());
 
+    Pointer("/xyz").Set(d, "test");
+
+    print("system", d["xyz"].GetString());
+
     save(true);
 }
