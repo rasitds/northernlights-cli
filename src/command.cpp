@@ -13,18 +13,21 @@ Command::Command()
                     print("system", "clear, echo, grant, admin, search, analyze, access, /, q");
                     //...
                 }});
-    addCommand({"q", {}, [](std::queue<std::string> &)
+    addCommand({"exit", {}, [](std::queue<std::string> &)
                 {
-                    Trigger::Instance().terminate();
+                    const int promptMode = Prompt::Instance().getPromptMode();
+                    if (promptMode == 2)
+                        Trigger::Instance().terminate();
+                    else Prompt::Instance().setPromptMode(2);
                 }});
     addCommand({"/", {}, [](std::queue<std::string> &)
                 {
-                    int promptMode = Prompt::Instance().getPromptMode();
-                    Prompt::Instance().setPromptMode(promptMode == 2 ? 8 : 2);
+                    const int promptMode = Prompt::Instance().getPromptMode();
+                    Prompt::Instance().setPromptMode(8);
                 }});
     addCommand({"access", {}, [](std::queue<std::string> &)
                 {
-                    int promptMode = Prompt::Instance().getPromptMode();;
+                    const int promptMode = Prompt::Instance().getPromptMode();;
                     if (promptMode != 8)
                         return;
 
@@ -36,7 +39,7 @@ Command::Command()
     addCommand({"admin", {}, [](std::queue<std::string> &)
                 {
                     User user;
-                    int userType = user.getUserType();
+                    const int userType = user.getUserType();
                     if (!userType)
                         print("warning", "ADMIN COMMAND EXECUTED.");
                 }});
