@@ -120,6 +120,20 @@ namespace termcolor
 
 
     inline
+    std::ostream& italic(std::ostream& stream)
+    {
+        if (_internal::is_colorized(stream))
+        {
+        #if defined(TERMCOLOR_OS_MACOS) || defined(TERMCOLOR_OS_LINUX)
+            stream << "\033[3m";
+        #elif defined(TERMCOLOR_OS_WINDOWS)
+        #endif
+        }
+        return stream;
+    }
+
+
+    inline
     std::ostream& underline(std::ostream& stream)
     {
         if (_internal::is_colorized(stream))
@@ -168,6 +182,20 @@ namespace termcolor
         {
         #if defined(TERMCOLOR_OS_MACOS) || defined(TERMCOLOR_OS_LINUX)
             stream << "\033[8m";
+        #elif defined(TERMCOLOR_OS_WINDOWS)
+        #endif
+        }
+        return stream;
+    }
+
+
+    inline
+    std::ostream& crossed(std::ostream& stream)
+    {
+        if (_internal::is_colorized(stream))
+        {
+        #if defined(TERMCOLOR_OS_MACOS) || defined(TERMCOLOR_OS_LINUX)
+            stream << "\033[9m";
         #elif defined(TERMCOLOR_OS_WINDOWS)
         #endif
         }
@@ -453,7 +481,7 @@ namespace termcolor
             else if ((&stream == &std::cerr) || (&stream == &std::clog))
                 return stderr;
 
-            return nullptr;
+            return 0;
         }
 
         // Say whether a given stream should be colorized or not. It's always
