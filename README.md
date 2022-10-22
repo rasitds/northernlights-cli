@@ -1,4 +1,8 @@
-# nl-cli
+# Northern Lights Command-line Interface
+
+Command-line Interface for something cool
+
+**Current Stage: `pre-alpha`**
 
 Instructions for using the app:
 
